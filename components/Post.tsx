@@ -16,16 +16,13 @@ export type PostProps = {
 const Post: React.FC<{ post: PostProps }> = ({ post }) => {
   const authorName = post.author ? post.author.name : "Unknown author";
   return (
-    <div onClick={() => Router.push("/p/[id]", `/p/${post.id}`)}>
-      <h2>{post.title}</h2>
+    <div
+      onClick={() => Router.push("/p/[id]", `/p/${post.id}`)}
+      className="p-8"
+    >
+      <h2 className="text-2xl font-semibold">{post.title}</h2>
       <small>By {authorName}</small>
-      <ReactMarkdown children={post.content} />
-      <style jsx>{`
-        div {
-          color: inherit;
-          padding: 2rem;
-        }
-      `}</style>
+      <ReactMarkdown children={post.content} className="text-lg" />
     </div>
   );
 };
